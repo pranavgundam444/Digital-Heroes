@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+
+
+model User {
+  id           String     @id @default(cuid())
+  email        String     @unique
+  passwordHash String
+  name         String
+  role         String     @default("MEMBER")
+  active       Boolean    @default(true)
+  createdAt    DateTime   @default(now())
+
+  leads        Lead[]     @relation("AssignedLeads")
+  notes        Note[]
+  activities   Activity[]
+}
+
+model Lead {
+  id           String     @id @default(cuid())
+  name         String
+  email        String     @unique
+  phone        String?
+  company      String?
+  source       String?
+  message      String?
+  status       String     @default("NEW")
+  assignedToId String?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  assignedTo   User?      @relation("AssignedLeads", fields: [assignedToId], references: [id])
+  notes        Note[]
+  activities   Activity[]
+
+  @@index([status])
+  @@index([assignedToId])
+  @@index([createdAt])
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  leadId    String
+  userId    String
+  body      String
+  createdAt DateTime @default(now())
+
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Activity {
+  id          String       @id @default(cuid())
+  leadId      String
+  userId      String?
+  type        String
+  description String
+  createdAt   DateTime     @default(now())
+
+  lead        Lead         @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  user        User?        @relation(fields: [userId], references: [id])
+}
