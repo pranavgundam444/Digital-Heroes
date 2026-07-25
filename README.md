@@ -5,7 +5,7 @@ A full-stack lead management platform built for a small sales team.
 ## Architecture Overview
 *   **Backend:** Node.js, Express, TypeScript, Prisma (SQLite).
 *   **Frontend:** React, TypeScript, Vite, React Router.
-*   **Design:** Custom design system (vanilla CSS), dark mode, glassmorphism.
+*   **Design:** Custom design system (vanilla CSS), warm light theme, glassmorphism.
 *   **Auth:** JWT-based authentication with `httpOnly` cookies and Role-Based Access Control (RBAC).
 
 ## Features
