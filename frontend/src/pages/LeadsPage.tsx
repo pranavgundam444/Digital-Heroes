@@ -126,10 +126,10 @@ export function LeadsPage() {
   };
 
   // Stats
-  const statusCounts = leads.reduce<Record<string, number>>((acc, l) => {
-    acc[l.status] = (acc[l.status] || 0) + 1;
-    return acc;
-  }, {});
+  // const statusCounts = leads.reduce<Record<string, number>>((acc, l) => {
+  //   acc[l.status] = (acc[l.status] || 0) + 1;
+  //   return acc;
+  // }, {});
 
   return (
     <AppLayout>
