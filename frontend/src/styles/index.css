@@ -33,24 +33,24 @@
   --color-warning-400: #fbbf24;
   --color-warning-500: #f59e0b;
 
-  /* Surface colors — dark mode */
-  --bg-base: #0a0b0f;
-  --bg-surface: #111218;
-  --bg-card: #16181f;
-  --bg-elevated: #1c1e28;
-  --bg-hover: #22253a;
+  /* Surface colors — light mode */
+  --bg-base: #f3f1e9;
+  --bg-surface: #f9f8f2;
+  --bg-card: #ffffff;
+  --bg-elevated: #ffffff;
+  --bg-hover: #e8e5d8;
 
   /* Borders */
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --border-default: rgba(255, 255, 255, 0.10);
-  --border-strong: rgba(255, 255, 255, 0.18);
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-default: rgba(0, 0, 0, 0.10);
+  --border-strong: rgba(0, 0, 0, 0.18);
   --border-primary: rgba(99, 102, 241, 0.4);
 
   /* Text */
-  --text-primary: #f1f2f7;
-  --text-secondary: #9498b0;
-  --text-tertiary: #5c6080;
-  --text-inverse: #0a0b0f;
+  --text-primary: #111218;
+  --text-secondary: #4a4d63;
+  --text-tertiary: #757999;
+  --text-inverse: #ffffff;
 
   /* Status colors */
   --status-new: #60a5fa;
@@ -67,9 +67,9 @@
   --status-lost-bg: rgba(248, 113, 113, 0.12);
 
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  --gradient-hero: linear-gradient(135deg, #312e81 0%, #1e1b4b 50%, #0a0b0f 100%);
-  --gradient-card: linear-gradient(145deg, rgba(99, 102, 241, 0.08) 0%, rgba(139, 92, 246, 0.04) 100%);
+  --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  --gradient-hero: linear-gradient(135deg, #f3f1e9 0%, #e8e6dc 50%, #dad8cc 100%);
+  --gradient-card: linear-gradient(145deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.2) 100%);
 
   /* Shadows */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -371,11 +371,11 @@ p {
 }
 
 .card-glass {
-  background: rgba(22, 24, 31, 0.8);
+  background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(20px);
   border: 1px solid var(--border-default);
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-md);
 }
 
 /* ============ Buttons ============ */
@@ -1047,7 +1047,7 @@ tbody td {
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
   top: -100px;
   right: -100px;
   pointer-events: none;
@@ -1058,7 +1058,7 @@ tbody td {
   width: 400px;
   height: 400px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.06) 0%, transparent 70%);
   bottom: -100px;
   left: -50px;
   pointer-events: none;
@@ -1129,7 +1129,7 @@ tbody td {
 
 .capture-hero p {
   font-size: 1.1rem;
-  color: rgba(241, 242, 247, 0.7);
+  color: var(--text-secondary);
   max-width: 500px;
   margin: 0 auto;
   position: relative;
