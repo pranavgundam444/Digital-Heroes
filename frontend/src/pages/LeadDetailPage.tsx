@@ -40,7 +40,7 @@ export function LeadDetailPage() {
   const [notes, setNotes] = useState<Note[]>([]);
   const [activities, setActivities] = useState<Activity[]>([]);
   const [users, setUsers] = useState<User[]>([]);
-  
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -69,7 +69,7 @@ export function LeadDetailPage() {
       setLead(leadRes.data.lead);
       setNotes(notesRes.data.notes);
       setActivities(activityRes.data.activities);
-      
+
       if (isAdmin) {
         const usersRes = await usersApi.list();
         setUsers(usersRes.data.users);
@@ -148,9 +148,9 @@ export function LeadDetailPage() {
       await leadsApi.update(id, {
         name: editForm.name,
         email: editForm.email,
-        phone: editForm.phone,
-        company: editForm.company,
-        source: editForm.source,
+        phone: editForm.phone ?? undefined,
+        company: editForm.company ?? undefined,
+        source: editForm.source ?? undefined,
       });
       setShowEdit(false);
       fetchData();
@@ -215,7 +215,7 @@ export function LeadDetailPage() {
         <div className="lead-detail-grid">
           {/* Main Content (Left) */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
-            
+
             {/* Lead Header & Details */}
             <div className="card">
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--space-6)' }}>
@@ -274,7 +274,7 @@ export function LeadDetailPage() {
             {/* Notes Section */}
             <div className="card">
               <h3 style={{ marginBottom: 'var(--space-4)' }}>Notes</h3>
-              
+
               {canAddNote ? (
                 <form onSubmit={handleAddNote} style={{ marginBottom: 'var(--space-6)' }}>
                   <textarea
@@ -320,11 +320,11 @@ export function LeadDetailPage() {
 
           {/* Sidebar Content (Right) */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
-            
+
             {/* Controls Card */}
             <div className="card">
               <h3 style={{ marginBottom: 'var(--space-4)', fontSize: '1.1rem' }}>Manage Lead</h3>
-              
+
               <div className="form-group" style={{ marginBottom: 'var(--space-4)' }}>
                 <label className="form-label">Status</label>
                 <select
@@ -372,7 +372,7 @@ export function LeadDetailPage() {
             {/* Activity Trail */}
             <div className="card">
               <h3 style={{ marginBottom: 'var(--space-4)', fontSize: '1.1rem' }}>Activity History</h3>
-              
+
               <div className="activity-timeline">
                 {activities.length === 0 ? (
                   <p style={{ color: 'var(--text-tertiary)', fontSize: '0.875rem' }}>No activity recorded.</p>
@@ -413,25 +413,25 @@ export function LeadDetailPage() {
             <form onSubmit={handleSaveEdit} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
               <div className="form-group">
                 <label className="form-label">Name</label>
-                <input className="form-input" required value={editForm.name || ''} onChange={e => setEditForm(f => ({...f, name: e.target.value}))} />
+                <input className="form-input" required value={editForm.name || ''} onChange={e => setEditForm(f => ({ ...f, name: e.target.value }))} />
               </div>
               <div className="form-group">
                 <label className="form-label">Email</label>
-                <input className="form-input" type="email" required value={editForm.email || ''} onChange={e => setEditForm(f => ({...f, email: e.target.value}))} />
+                <input className="form-input" type="email" required value={editForm.email || ''} onChange={e => setEditForm(f => ({ ...f, email: e.target.value }))} />
               </div>
               <div className="form-group">
                 <label className="form-label">Phone</label>
-                <input className="form-input" value={editForm.phone || ''} onChange={e => setEditForm(f => ({...f, phone: e.target.value}))} />
+                <input className="form-input" value={editForm.phone || ''} onChange={e => setEditForm(f => ({ ...f, phone: e.target.value }))} />
               </div>
               <div className="form-group">
                 <label className="form-label">Company</label>
-                <input className="form-input" value={editForm.company || ''} onChange={e => setEditForm(f => ({...f, company: e.target.value}))} />
+                <input className="form-input" value={editForm.company || ''} onChange={e => setEditForm(f => ({ ...f, company: e.target.value }))} />
               </div>
               <div className="form-group">
                 <label className="form-label">Source</label>
-                <input className="form-input" value={editForm.source || ''} onChange={e => setEditForm(f => ({...f, source: e.target.value}))} />
+                <input className="form-input" value={editForm.source || ''} onChange={e => setEditForm(f => ({ ...f, source: e.target.value }))} />
               </div>
-              
+
               <div style={{ display: 'flex', gap: 'var(--space-3)', justifyContent: 'flex-end', marginTop: 'var(--space-2)' }}>
                 <button type="button" className="btn btn-secondary" onClick={() => setShowEdit(false)}>Cancel</button>
                 <button type="submit" className="btn btn-primary" disabled={updating}>
