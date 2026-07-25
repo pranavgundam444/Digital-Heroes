@@ -1,4 +1,3 @@
-import React from 'react';
 import { LeadStatus } from '../api/client';
 
 interface StatusBadgeProps {

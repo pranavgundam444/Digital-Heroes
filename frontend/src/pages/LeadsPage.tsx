@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { leadsApi, Lead, LeadStatus, LeadListParams, User, usersApi, CreateLeadData } from '../api/client';
 import { useAuth } from '../contexts/AuthContext';
@@ -73,7 +73,7 @@ export function LeadsPage() {
 
   useEffect(() => {
     if (isAdmin) {
-      usersApi.list().then((res) => setUsers(res.data.users)).catch(() => {});
+      usersApi.list().then((res) => setUsers(res.data.users)).catch(() => { });
     }
   }, [isAdmin]);
 
